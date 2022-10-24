@@ -71,7 +71,7 @@ $xpath = new DOMXpath($dom);
 
 $data = array();
 // get all table rows and rows which are not headers
-$table_rows = $xpath->query('//table');
+$table_rows = $xpath->query('//table[@id="tablepress-1345"]//tr');
 foreach($table_rows as $row => $tr) {
     foreach($tr->childNodes as $td) {
         $data[$row][] = preg_replace('~[\r\n]+~', '', trim($td->nodeValue));
@@ -79,8 +79,22 @@ foreach($table_rows as $row => $tr) {
     $data[$row] = array_values(array_filter($data[$row]));
 }
 
+$rows=sizeof($data,0);
+$columns = (sizeof($data,1)/$rows)-1;
+
+echo "Row: $rows" ."<br>";
+echo "Columns: $columns";
 echo '<pre>';
-print_r($data);
+// print_r($data);
+
+for ($i=0; $i <= ($rows-1); $i++) { 
+    for ($j=0; $j <= ($columns-1); $j++) { 
+        echo $data[$i][$j] . "     ";
+    }
+    echo "<br>";
+}
+
+// for ($i=0; $i < $rows; $i++) { // for ($j=0; $j < ; $j++) { // // code... // } // }
 //////////////////////////////////////////////////////////////////
 }
 ?>
@@ -148,17 +162,15 @@ hr {
         </div>
         <div id="results">
             <?php if (isset($_POST['site'])){?>
-            <center>
-                <div>
-                    <h3>Results for</h3>
-                    <a href="<?php value(); ?>" target="_blank">
-                        <?php value(); ?></a>
-                    <hr style="width:40%;">
-                </div>
-            </center>
-            <?php resuts();  } ?>
+            <div>
+                <h3>Results for</h3>
+                <a href="<?php value(); ?>" target="_blank">
+                    <?php value(); ?></a>
+                <hr style="width:40%;">
+            </div>
         </div>
     </center>
+    <?php resuts();  } ?>
 </body>
 
 </html>
