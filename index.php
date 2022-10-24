@@ -40,27 +40,48 @@ function resuts(){
     // }
     // echo "</table>";
 ///////////////////////////////////////////////////////
-    
- //initialize the connection with cURL (ch = cURL handle, or "channel")
+//initialize the connection with cURL (ch = cURL handle, or "channel")
 $ch = curl_init();
 //Get the link from the form
 $site=$_POST['site'];
-//set link to curl
+// //set link to curl
+// curl_setopt($ch, CURLOPT_URL, $site);
+// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+// //send the request and store it in $html
+// $html = curl_exec($ch);
+// // var_dump($html);
+// $dom = new DOMDocument();
+// @$dom->loadHTML($html);
+// $pack_array = array();
+// foreach($dom->getElementsByTagName('table') as $table){
+// $head_title = $table->textContent;
+// echo $head_title .'<br>';
+// echo '<br>';
+// }
+/////////////////////////////////////////////////////
 curl_setopt($ch, CURLOPT_URL, $site);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//send the request and store it in $html
-$html = curl_exec($ch);
-// var_dump($html);
-$dom = new DOMDocument();
-@$dom->loadHTML($html);
-$pack_array = array();
-foreach($dom->getElementsByTagName('table') as $table){
-$head_title = $table->textContent;
-echo $head_title .'<br>';
-echo '<br>';
-}
-//////////////////////////////////////////////////////
+$page = curl_exec($ch);
 
+$dom = new DOMDocument();
+libxml_use_internal_errors(true);
+$dom->loadHTML($page);
+libxml_clear_errors();
+$xpath = new DOMXpath($dom);
+
+$data = array();
+// get all table rows and rows which are not headers
+$table_rows = $xpath->query('//table');
+foreach($table_rows as $row => $tr) {
+    foreach($tr->childNodes as $td) {
+        $data[$row][] = preg_replace('~[\r\n]+~', '', trim($td->nodeValue));
+    }
+    $data[$row] = array_values(array_filter($data[$row]));
+}
+
+echo '<pre>';
+print_r($data);
+//////////////////////////////////////////////////////////////////
 }
 ?>
 <!DOCTYPE html>
@@ -130,7 +151,7 @@ hr {
             <center>
                 <div>
                     <h3>Results for</h3>
-                    <a href="<?php value(); ?>">
+                    <a href="<?php value(); ?>" target="_blank">
                         <?php value(); ?></a>
                     <hr style="width:40%;">
                 </div>
