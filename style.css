@@ -1,0 +1,37 @@
+body {
+    background-color: whitesmoke;
+}
+
+form {}
+
+#heading {
+    font-size: 25px;
+    font-family: sans-serif;
+}
+
+#form-container {
+    align-content: center;
+    color: darkgoldenrod;
+    font-size: 20px;
+    width: fit-content;
+    margin: 50px;
+    border-radius: 0%;
+}
+
+#Site {
+    border-radius: 15%;
+    height: 20px;
+    width: 250px;
+}
+
+#form-content {
+    align-content: center;
+}
+
+input {
+    vertical-align: center;
+}
+
+hr {
+    width: 70%;
+}
