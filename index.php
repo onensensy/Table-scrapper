@@ -3,12 +3,13 @@
 //database conection
 $db_username = 'root';
 $db_password = '';
-$conn = new PDO( 'mysql:host=localhost;dbname=scrap', $db_username, $db_password );
+$GLOBALS['conn'] = new PDO( 'mysql:host=localhost;dbname=scrap', $db_username, $db_password );
 
 if(!$conn){
     die("Fatal Error: Connection Failed!");
 }
 
+//SQL statement
 //Return URL in the form on running
 function value()
 {
@@ -21,43 +22,12 @@ function value()
 
 //Results
 function resuts(){
-// // Create DOM from URL or file
-// $html = file_get_html("http://www.example.org/");
-// // Find the tr array
-// $tr_array = $html->find("table#table2 tr");
-// $td_array = [];
-// // Find the td array
-// foreach($tr_array as $tr) {
-// array_push($td_array,$tr->find("td"));
-// }
-// echo "<table id=\"table1\">";
-    // foreach($tr_array as $tr) {
-    // echo "<tr>";
-        // foreach($td_array as $td) {
-        // echo $td;
-        // }
-        // echo "</tr>";
-    // }
-    // echo "</table>";
-///////////////////////////////////////////////////////
+global $conn;
 //initialize the connection with cURL (ch = cURL handle, or "channel")
 $ch = curl_init();
 //Get the link from the form
 $site=$_POST['site'];
-// //set link to curl
-// curl_setopt($ch, CURLOPT_URL, $site);
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// //send the request and store it in $html
-// $html = curl_exec($ch);
-// // var_dump($html);
-// $dom = new DOMDocument();
-// @$dom->loadHTML($html);
-// $pack_array = array();
-// foreach($dom->getElementsByTagName('table') as $table){
-// $head_title = $table->textContent;
-// echo $head_title .'<br>';
-// echo '<br>';
-// }
+
 /////////////////////////////////////////////////////
 curl_setopt($ch, CURLOPT_URL, $site);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -68,7 +38,8 @@ libxml_use_internal_errors(true);
 $dom->loadHTML($page);
 libxml_clear_errors();
 $xpath = new DOMXpath($dom);
-
+// 
+//https://www.visualcapitalist.com/top-50-most-valuable-global-brands/
 $data = array();
 // get all table rows and rows which are not headers
 $table_rows = $xpath->query('//table[@id="tablepress-1345"]//tr');
@@ -79,24 +50,53 @@ foreach($table_rows as $row => $tr) {
     $data[$row] = array_values(array_filter($data[$row]));
 }
 
+
+//Array Size
 $rows=sizeof($data,0);
 $columns = (sizeof($data,1)/$rows)-1;
 
+//Serialize
+$serial = utf8_encode( serialize( $data ) ) ;
+//echo $serial;
+
+
+//Insert into Database
+$sql="INSERT into `scrapRecord`(scrapTime,data) VALUES(current_timestamp(),?)";
+$result=$conn->prepare($sql);
+$result->execute([$serial]);
+if ($result == true) {
+                echo "Record Successfull<br><br>";
+            }
+
+//Output Number of rows and columns
 echo "Row: $rows" ."<br>";
 echo "Columns: $columns";
 echo '<pre>';
 // print_r($data);
 
-for ($i=0; $i <= ($rows-1); $i++) { 
-    for ($j=0; $j <= ($columns-1); $j++) { 
-        echo $data[$i][$j] . "     ";
-    }
-    echo "<br>";
+
+
+//Output data into a table
+?>
+<table id="results">
+    <?php
+for ($i=0; $i <= ($rows-1); $i++) { ?>
+    <tr>
+        <?php 
+    for ($j=0; $j <= ($columns-1); $j++) { ?>
+        <td>
+            <?php echo $data[$i][$j];?>
+        </td>
+        <?php }             
+        ?>
+    </tr>
+    <?php }?>
+</table>
+<?php 
+
 }
 
-// for ($i=0; $i < $rows; $i++) { // for ($j=0; $j < ; $j++) { // // code... // } // }
-//////////////////////////////////////////////////////////////////
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
