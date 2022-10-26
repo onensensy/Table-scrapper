@@ -22,12 +22,12 @@ function value()
 //Results
 function resuts(){
 global $conn;
-
 //initialize the connection with cURL (ch = cURL handle, or "channel")
 $ch = curl_init();
 //Get the link from the form
 $site=$_POST['site'];
 
+/////////////////////////////////////////////////////
 curl_setopt($ch, CURLOPT_URL, $site);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $page = curl_exec($ch);
@@ -73,18 +73,18 @@ $result=$conn->prepare($sql);
 $result->execute([$serial]);
 
 if ($result == true) {
-    echo "Record Successfull<br><br>";
-}
+                echo "Recorded Successfully<br>";
+            }
 
 //Output Number of rows and columns
-echo "Row: $rows" ."<br>";
+echo "Rows: $rows" ."<br>";
 echo "Columns: $columns";
 echo '<pre>';
 // print_r($data);
 
 //Output data into a table
 ?>
-<table id="results">
+<table id="results" style='border-spacing:0;width:70%;border-collapse:"collapse"'>
     <?php
     for ($i=0; $i <= ($rows-1); $i++) { ?>
     <tr>
@@ -112,33 +112,34 @@ echo '<pre>';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scrapper</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
-
 <body>
-    <center>
-        <div id="heading">
-            <h1>Table scrap Tool</h1>
+    <main>
+    <div class="heading">
+            <h1>TABLE SCRAP TOOL</h1>
         </div>
-        <hr>
-        <div id="form-container">
+        <div>
             <form action="index.php" method="post">
-                <div id="form-content"><label>Site:</label>
+                <div class="site">
                     <input type='text' id="Site" name='site' value="<?php value(); ?>" placeholder="Enter the site URL here">
-                    <input type='submit' name='Scrap'><br></div>
+                </div>
+                <div class="submit-btn">
+                    <input type='submit' name='Scrap' value="Submit">
+                </div>
             </form>
         </div>
         <div id="results">
             <?php if (isset($_POST['site'])){?>
-            <div>
+            <div class="results-for">
                 <h3>Results for</h3>
                 <a href="<?php value(); ?>" target="_blank">
                     <?php value(); ?></a>
-                <hr style="width:40%;">
             </div>
         </div>
-    </center>
-    <?php resuts(); } ?>
+    <?php resuts();  } ?>
+    </main>
 </body>
 
 </html>

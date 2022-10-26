@@ -1,37 +1,108 @@
-body {
-    background-color: whitesmoke;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+html{
+    box-sizing: border-box;
 }
 
-form {}
+*,*::before, *::after{
+    box-sizing: inherit;
+}
 
-#heading {
-    font-size: 25px;
+*{
+    margin: 0;
+    padding: 0;
+    /* overflow-x: hidden; */
+    /* font-family: sans-serif; */
+    /* border: 1px solid red; */
+}
+
+h2{
     font-family: sans-serif;
 }
 
-#form-container {
-    align-content: center;
-    color: darkgoldenrod;
-    font-size: 20px;
-    width: fit-content;
-    margin: 50px;
-    border-radius: 0%;
+h4{
+    font-family: sans-serif;
 }
 
-#Site {
-    border-radius: 15%;
-    height: 20px;
-    width: 250px;
+main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 40px;
 }
 
-#form-content {
-    align-content: center;
+.heading{
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
-input {
-    vertical-align: center;
+form{
+    width: 470px;
+}
+.site{
+    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-hr {
-    width: 70%;
+.site input{
+    width: 100%; 
+    border-radius: 29px;
+    padding: 14px;
+    width: 100%;
+    outline: none;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 4px 3px rgba(0, 0, 0, 0.1);
+}
+
+.site input[type='text']{
+font-size: 16px;
+}
+
+.submit-btn{
+    padding-left: 10px;
+    position: relative;
+}
+
+.submit-btn input{
+    background-color: #000;
+    color: #fff;
+    padding: 14px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    width: 90px;
+    font-size: 15px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all .2s ease-in;
+    font-weight: bold;
+    margin-top: 9px;
+    margin-bottom: 18px;
+    position: absolute;
+    right: 10px;
+    top: -10px;
+}
+
+.submit-btn input:hover{
+    cursor: pointer;
+    background-color: rgb(138, 135, 135);
+    color: #fff;
+}
+
+a{
+    /* font-size: 15px; */
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.results-for{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    width: 700px;
+}
+
+tr:nth-child(even){
+    background-color:  #ccc;
 }
