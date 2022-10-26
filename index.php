@@ -65,19 +65,11 @@ $sql="INSERT into `scrapRecord`(scrapTime,data) VALUES(current_timestamp(),?)";
 $result=$conn->prepare($sql);
 $result->execute([$serial]);
 if ($result == true) {
-<<<<<<< HEAD
                 echo "Recorded Successfully<br>";
             }
 
 //Output Number of rows and columns
 echo "Rows: $rows" ."<br>";
-=======
-                echo "Record Successfull<br><br>";
-            }
-
-//Output Number of rows and columns
-echo "Row: $rows" ."<br>";
->>>>>>> 96b33cc72d3dcc13a1bebffb052eea8ddf65e672
 echo "Columns: $columns";
 echo '<pre>';
 // print_r($data);
@@ -114,7 +106,6 @@ for ($i=0; $i <= ($rows-1); $i++) { ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scrapper</title>
-<<<<<<< HEAD
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" type="text/css">
 </head>
@@ -131,65 +122,10 @@ for ($i=0; $i <= ($rows-1); $i++) { ?>
                 <div class="submit-btn">
                     <input type='submit' name='Scrap' value="Submit">
                 </div>
-=======
-</head>
-<style type="text/css">
-body {
-    background-color: whitesmoke;
-}
-
-form {}
-
-#heading {
-    font-size: 25px;
-    font-family: sans-serif;
-}
-
-#form-container {
-    align-content: center;
-    color: darkgoldenrod;
-    font-size: 20px;
-    width: fit-content;
-    margin: 50px;
-    border-radius: 0%;
-}
-
-#Site {
-    border-radius: 15%;
-    height: 20px;
-    width: 250px;
-}
-
-#form-content {
-    align-content: center;
-}
-
-input {
-    vertical-align: center;
-}
-
-hr {
-    width: 70%;
-}
-</style>
-
-<body>
-    <center>
-        <div id="heading">
-            <h1>Table scrap Tool</h1>
-        </div>
-        <hr>
-        <div id="form-container">
-            <form action="index.php" method="post">
-                <div id="form-content"><label>Site:</label>
-                    <input type='text' id="Site" name='site' value="<?php value(); ?>" placeholder="Enter the site URL here">
-                    <input type='submit' name='Scrap'><br></div>
->>>>>>> 96b33cc72d3dcc13a1bebffb052eea8ddf65e672
             </form>
         </div>
         <div id="results">
             <?php if (isset($_POST['site'])){?>
-<<<<<<< HEAD
             <div class="results-for">
                 <h3>Results for</h3>
                 <a href="<?php value(); ?>" target="_blank">
@@ -198,17 +134,6 @@ hr {
         </div>
     <?php resuts();  } ?>
     </main>
-=======
-            <div>
-                <h3>Results for</h3>
-                <a href="<?php value(); ?>" target="_blank">
-                    <?php value(); ?></a>
-                <hr style="width:40%;">
-            </div>
-        </div>
-    </center>
-    <?php resuts();  } ?>
->>>>>>> 96b33cc72d3dcc13a1bebffb052eea8ddf65e672
 </body>
 
 </html>
