@@ -86,11 +86,7 @@ echo '<pre>';
 
 //Output data into a table
 ?>
-<<<<<<< HEAD
 <table id="results" style='border-spacing:0;width:70%;border-collapse:"collapse"'>
-=======
-<table id="results">
->>>>>>> 96b33cc72d3dcc13a1bebffb052eea8ddf65e672
     <?php
 for ($i=0; $i <= ($rows-1); $i++) { ?>
     <tr>
