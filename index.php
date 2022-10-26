@@ -73,8 +73,8 @@ $result=$conn->prepare($sql);
 $result->execute([$serial]);
 
 if ($result == true) {
-                echo "Recorded Successfully<br>";
-            }
+    echo "Recorded Successfully<br>";
+}
 
 //Output Number of rows and columns
 echo "Rows: $rows" ."<br>";
@@ -115,9 +115,10 @@ echo '<pre>';
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" type="text/css">
 </head>
+
 <body>
     <main>
-    <div class="heading">
+        <div class="heading">
             <h1>TABLE SCRAP TOOL</h1>
         </div>
         <div>
@@ -138,7 +139,7 @@ echo '<pre>';
                     <?php value(); ?></a>
             </div>
         </div>
-    <?php resuts();  } ?>
+        <?php resuts();  } ?>
     </main>
 </body>
 
