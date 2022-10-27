@@ -73,25 +73,25 @@ $sql="INSERT into `scrapRecord`(id,scrapTime,data) VALUES(id,current_timestamp()
 $result=$conn->prepare($sql);
 $result->execute([$serial]);
 
-if ($result == true) { ?>
-<div class="record">
-    <?php echo "Recorded Successfully!<br>"; ?>
+
+
+//Output Number of rows and columns
+?>
+<div class="parent container-row-column">
+    <div class="child columns">
+        <?php echo "<code>Attributes: $columns</code>"."<br>";?>
+    </div>
+    <div class="child rows">
+        <?php $records=$rows-1; echo "<code>Records: $records </code>"; ?>
+    </div>
+    <?php if ($result == true) { ?>
+    <div class="record">
+        <?php echo "Recorded Successfully!<br>"; ?>
+    </div>
 </div>
 <?php 
 }
 
-//Output Number of rows and columns
-?>
-<div class="container-row-column">
-<div class="rows">
-    <?php echo "<code>Rows: $rows</code>"; ?>
-</div>
-<div class="columns">
-    <?php echo "<code>Columns: $columns</code>"."<br>";?>
-</div>
-</div>
-
-<?php
 
 // print_r($data);
 
