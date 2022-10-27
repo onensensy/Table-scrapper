@@ -1,16 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
-
-html {
+html{
     box-sizing: border-box;
 }
 
-*,
-*::before,
-*::after {
+*,*::before, *::after{
     box-sizing: inherit;
 }
 
-* {
+*{
     margin: 0;
     padding: 0;
     /* overflow-x: hidden; */
@@ -18,39 +15,38 @@ html {
     /* border: 1px solid red; */
 }
 
-h2 {
+h2{
     font-family: sans-serif;
 }
 
-h4 {
+h4{
     font-family: sans-serif;
 }
 
-main {
+main{
     display: flex;
     align-items: center;
     flex-direction: column;
     padding-top: 40px;
 }
 
-.heading {
+.heading{
     padding: 10px;
     margin-bottom: 10px;
 }
 
-form {
+form{
     width: 470px;
 }
-
-.site {
+.site{
     padding-bottom: 20px;
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
 }
 
-.site input {
-    width: 100%;
+.site input{
+    width: 100%; 
     border-radius: 29px;
     padding: 14px;
     width: 100%;
@@ -59,16 +55,16 @@ form {
     box-shadow: 2px 2px 4px 3px rgba(0, 0, 0, 0.1);
 }
 
-.site input[type='text'] {
-    font-size: 16px;
+.site input[type='text']{
+font-size: 16px;
 }
 
-.submit-btn {
+.submit-btn{
     padding-left: 10px;
     position: relative;
 }
 
-.submit-btn input {
+.submit-btn input{
     background-color: #000;
     color: #fff;
     padding: 14px;
@@ -87,19 +83,19 @@ form {
     top: -10px;
 }
 
-.submit-btn input:hover {
+.submit-btn input:hover{
     cursor: pointer;
     background-color: rgb(138, 135, 135);
     color: #fff;
 }
 
-a {
+a{
     /* font-size: 15px; */
     margin-top: 16px;
     margin-bottom: 16px;
 }
 
-.results-for {
+.results-for{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -107,6 +103,6 @@ a {
     width: 700px;
 }
 
-tr:nth-child(even) {
-    background-color: #ccc;
+tr:nth-child(even){
+    background-color:  #ccc;
 }
