@@ -72,13 +72,23 @@ $sql="INSERT into `scrapRecord`(id,scrapTime,data) VALUES(id,current_timestamp()
 $result=$conn->prepare($sql);
 $result->execute([$serial]);
 
-if ($result == true) {
-    echo "Recorded Successfully<br>";
+if ($result == true) { ?>
+<div >
+    <?php echo "Recorded Successfully<br>"; ?>
+</div>
+ 
+ <?php 
 }
 
 //Output Number of rows and columns
-echo "Rows: $rows" ."<br>";
-echo "Columns: $columns";
+?>
+<div>
+    <?php echo "Rows: $rows" ."<br>"; ?>
+</div>
+<div>
+    <?php echo "Columns: $columns"."<br>";?>
+</div>
+<?php
 echo '<pre>';
 // print_r($data);
 
