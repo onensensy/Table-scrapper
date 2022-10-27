@@ -82,12 +82,15 @@ if ($result == true) { ?>
 
 //Output Number of rows and columns
 ?>
+<div class="container-row-column">
 <div class="rows">
-    <?php echo "<code>Rows: $rows</code>" ."<br>"; ?>
+    <?php echo "<code>Rows: $rows</code>"; ?>
 </div>
 <div class="columns">
     <?php echo "<code>Columns: $columns</code>"."<br>";?>
 </div>
+</div>
+
 <?php
 echo '<pre>';
 // print_r($data);
