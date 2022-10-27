@@ -73,8 +73,8 @@ $result=$conn->prepare($sql);
 $result->execute([$serial]);
 
 if ($result == true) { ?>
-<div >
-    <?php echo "Recorded Successfully<br>"; ?>
+<div class="record">
+    <?php echo "Recorded Successfully!<br>"; ?>
 </div>
  
  <?php 
@@ -82,11 +82,11 @@ if ($result == true) { ?>
 
 //Output Number of rows and columns
 ?>
-<div>
-    <?php echo "Rows: $rows" ."<br>"; ?>
+<div class="rows">
+    <?php echo "<code>Rows: $rows</code>" ."<br>"; ?>
 </div>
-<div>
-    <?php echo "Columns: $columns"."<br>";?>
+<div class="columns">
+    <?php echo "<code>Columns: $columns</code>"."<br>";?>
 </div>
 <?php
 echo '<pre>';

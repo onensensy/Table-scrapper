@@ -106,3 +106,21 @@ a{
 tr:nth-child(even){
     background-color:  #ccc;
 }
+
+.record{
+    color: green;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.rows{
+    font-weight: 400;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.columns{
+    font-size: 14px;
+    font-weight: 700;
+}
