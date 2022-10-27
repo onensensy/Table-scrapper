@@ -104,7 +104,7 @@ if ($result == true) { ?>
         <?php 
             for ($j=0; $j <= ($columns-1); $j++) { 
                 if ($i==0) {?>
-        <th style="background: black; color: white;">
+        <th style="background: rgb(82, 80, 80); color: #FAF9F6;">
             <?php echo $data[$i][$j];?>
         </th>
         <?php }else{ ?>
@@ -153,7 +153,7 @@ if ($result == true) { ?>
         <div id="results">
             <?php if (isset($_POST['site'])){?>
             <div class="results-for">
-                <h3>Results for</h3>
+                <h4>Results for</h4>
                 <a href="<?php value(); ?>" target="_blank">
                     <?php value(); ?></a>
             </div>
