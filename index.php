@@ -40,10 +40,8 @@ $xpath = new DOMXpath($dom);
 
 
 ///////////////////
-//  Customized for:
-//
-//  site: https://www.visualcapitalist.com/top-50-most-valuable-global-brands/
-//  table id="tablepress-1345"
+//site: https://www.visualcapitalist.com/top-50-most-valuable-global-brands/
+//table id="tablepress-1345"
 //////////////////
 
 //Store data in array
@@ -55,23 +53,10 @@ $table_rows = $xpath->query('//table[@id="tablepress-1345"]//tr');
 foreach($table_rows as $row => $tr) {
     foreach($tr->childNodes as $td) {
         $data[$row][] = preg_replace('~[\r\n]+~', '', trim($td->nodeValue));
-
     }
     $data[$row] = array_values(array_filter($data[$row]));
 }
 
-
-$rows=sizeof($data,0);
-
-if ($rows==0) {
-   echo $error= "Something went wrong :: 
-   -Network error,
-   -invalid link,
-   -invalid div id";
-
-    Return $error;
-}
-$columns=(sizeof($data,1) / $rows) - 1;
 
 //Array Size ( Also to determine the table dimensions(Row & Column))
 $rows=sizeof($data,0);
@@ -79,7 +64,7 @@ $columns = (sizeof($data,1)/$rows)-1;
 
 //Serialize data for storage to database
 $serial = utf8_encode( serialize( $data ) ) ;
-//echo $serial;
+    //echo $serial;
 
 
 //Insert into Database
@@ -87,51 +72,26 @@ $sql="INSERT into `scrapRecord`(id,scrapTime,data) VALUES(id,current_timestamp()
 $result=$conn->prepare($sql);
 $result->execute([$serial]);
 
-if ($result == true) {?>
-<div id="record-status">
-    <?php echo "Recorded Successfully<br>"; ?>
-</div>
-<?php }
-
-//Latest Retrieve from Database
-$sql="SELECT * FROM scrapRecord order by id desc limit 1";
-$result=$conn->prepare($sql);
-$result->execute();
-
 if ($result == true) { ?>
-<div id="retrieve-status">
-    <?php echo "Retrieval Successfull<br>"; ?>
+<div class="record">
+    <?php echo "Recorded Successfully!<br>"; ?>
 </div>
-<?php 
-
-while ($list=$result->fetch(PDO::FETCH_ASSOC)) {
-$retrivedData= unserialize( $list['data']);
-
-// Print in Array form
-//================
-// echo '<pre>';
-// print_r($retrivedData);
-// echo '</pre>';
-//===============
-
+ 
+ <?php 
 }
-}
-//Retrieve From Database
+
 //Output Number of rows and columns
 ?>
-<div>
-    <div>
-        <?php echo "Rows: $rows" ."<br>"; ?>
-    </div>
-    <div>
-        <?php echo "Columns: $columns" ."<br>"; ?>
-    </div>
+<div class="rows">
+    <?php echo "<code>Rows: $rows</code>" ."<br>"; ?>
+</div>
+<div class="columns">
+    <?php echo "<code>Columns: $columns</code>"."<br>";?>
 </div>
 <?php
 echo '<pre>';
 // print_r($data);
-$rows=sizeof($retrivedData,0);
-$columns = (sizeof($retrivedData,1)/$rows)-1;
+
 //Output data into a table
 ?>
 <table id="results" style='border-spacing:0;width:70%;border-collapse:"collapse"'>
@@ -140,20 +100,14 @@ $columns = (sizeof($retrivedData,1)/$rows)-1;
     <tr>
         <?php 
             for ($j=0; $j <= ($columns-1); $j++) { ?>
-        <?php if ($i==0) {?>
-        <th style="background-color: Black; color: whitesmoke;">
-            <?php echo $retrivedData[$i][$j];?>
-        </th>
-        <?php }else{ ?>
         <td>
-            <?php echo $retrivedData[$i][$j];?>
+            <?php echo $data[$i][$j];?>
         </td>
-        <?php }} ?>
+        <?php } ?>
     </tr>
     <?php }?>
 </table>
 <?php 
-echo "</pre>";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////
 ?>
