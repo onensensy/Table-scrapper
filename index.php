@@ -50,6 +50,7 @@ $data = array();
 
 // get all table rows including header
 $table_rows = $xpath->query('//table[@id="tablepress-1345"]//tr');
+// $table_rows = $xpath->query('//table[@id="table1"]//tr');
 foreach($table_rows as $row => $tr) {
     foreach($tr->childNodes as $td) {
         $data[$row][] = preg_replace('~[\r\n]+~', '', trim($td->nodeValue));
@@ -76,8 +77,7 @@ if ($result == true) { ?>
 <div class="record">
     <?php echo "Recorded Successfully!<br>"; ?>
 </div>
- 
- <?php 
+<?php 
 }
 
 //Output Number of rows and columns
@@ -89,7 +89,7 @@ if ($result == true) { ?>
     <?php echo "<code>Columns: $columns</code>"."<br>";?>
 </div>
 <?php
-echo '<pre>';
+
 // print_r($data);
 
 //Output data into a table
@@ -99,10 +99,16 @@ echo '<pre>';
     for ($i=0; $i <= ($rows-1); $i++) { ?>
     <tr>
         <?php 
-            for ($j=0; $j <= ($columns-1); $j++) { ?>
+            for ($j=0; $j <= ($columns-1); $j++) { 
+                if ($i==0) {?>
+        <th style="background: black; color: white;">
+            <?php echo $data[$i][$j];?>
+        </th>
+        <?php }else{ ?>
         <td>
             <?php echo $data[$i][$j];?>
         </td>
+        <?php } ?>
         <?php } ?>
     </tr>
     <?php }?>
