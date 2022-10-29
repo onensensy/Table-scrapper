@@ -140,13 +140,13 @@ if ($result == true) { ?>
         <div class="heading">
             <h1>TABLE SCRAP TOOL</h1>
         </div>
-        <div>
+        <div class="container">
             <form action="index.php" method="post">
                 <div class="site">
                     <input type='text' id="Site" name='site' value="<?php value(); ?>" placeholder="Enter the site URL here">
                 </div>
                 <div class="submit-btn">
-                    <input type='submit' name='Scrap' value="Submit">
+                    <input type='submit' name='Scrap' value="Search">
                 </div>
             </form>
         </div>
