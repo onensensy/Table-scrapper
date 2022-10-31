@@ -39,22 +39,22 @@ main {
     margin-bottom: 10px;
 }
 
-form{
+form {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 600px;
 }
 
-.site{
+.site {
     padding-bottom: 20px;
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
 }
 
-.site input{
-    width: 530px; 
+.site input {
+    width: 530px;
     border-radius: 29px;
     padding: 14px;
     outline: none;
@@ -62,16 +62,16 @@ form{
     box-shadow: 2px 2px 4px 3px rgba(0, 0, 0, 0.1);
 }
 
-.site input[type='text']{
-font-size: 15px;
-color: rgb(104, 103, 103);
+.site input[type='text'] {
+    font-size: 15px;
+    color: rgb(104, 103, 103);
 }
 
 .submit-btn {
     padding-left: 10px;
 }
 
-.submit-btn input{
+.submit-btn input {
     background-color: rgb(82, 80, 80);
     color: #fff;
     padding: 14px;
@@ -111,8 +111,8 @@ tr:nth-child(even) {
     background-color: #ccc;
 }
 
-.record{
-    color: #198754 ;
+.record {
+    color: #198754;
     font-size: 14px;
     font-weight: 500;
     font-family: sans-serif;
@@ -127,18 +127,18 @@ tr:nth-child(even) {
     font-family: sans-serif;
 }
 
-.columns{
+.columns {
     font-size: 13px;
     font-family: sans-serif;
 }
 
-.container-row-column{
-position: relative;
-margin-top: 2px;
-margin-bottom: 12px;
+.container-row-column {
+    position: relative;
+    margin-top: 2px;
+    margin-bottom: 12px;
 }
 
-th{
+th {
     text-align: center;
     padding: 10px;
     font-family: sans-serif;
@@ -146,9 +146,26 @@ th{
     font-weight: 400;
 }
 
-td{
+td {
     font-size: 14px;
     padding: 10px;
     font-family: sans-serif;
     text-align: center;
+}
+
+.parent {
+    text-align: center;
+}
+
+.child {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 0.5rem 0.5rem;
+    vertical-align: middle;
+}
+
+.child:hover {
+    cursor: pointer;
+    background-color: rgb(61, 60, 60);
+    color: #fff;
 }
