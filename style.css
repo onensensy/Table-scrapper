@@ -113,7 +113,7 @@ tr:nth-child(even) {
 
 .record {
     color: #198754;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     font-family: sans-serif;
     padding-bottom: 20px;
@@ -138,6 +138,11 @@ tr:nth-child(even) {
     margin-bottom: 12px;
 }
 
+table {
+    margin-bottom: 40px;
+    border: 1px solid #ccc;
+}
+
 th {
     text-align: center;
     padding: 10px;
@@ -159,13 +164,7 @@ td {
 
 .child {
     display: inline-block;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     padding: 0.5rem 0.5rem;
     vertical-align: middle;
-}
-
-.child:hover {
-    cursor: pointer;
-    background-color: rgb(61, 60, 60);
-    color: #fff;
 }

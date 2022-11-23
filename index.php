@@ -89,6 +89,7 @@ $result->execute([$serial]);
         <?php echo "Recorded Successfully!<br>"; ?>
     </div>
 </div>
+<hr style="width: 100%%;">
 <?php 
 }
 
